@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weekly Forecast.</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/EntryFormStyle.css}"/> <!-- Current form css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/HeaderStyle.css}"/> <!-- Adds css for header fragment -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- ICON FOR CURRENT LOCATION -->
+</head>
+<body>
+
+<header th:replace="fragments/HeaderFragment :: fragment"></header> <!-- Header template fragment -->
+
+<div class="pageTitle"><h2> Weather Forecast</h2></div>
+    <div class="inline-block">
+        <div th:text="${Error}" class="error"></div> <!-- Empty text that holds error warnings from backend -->
+        <form name="autocompleteForm"  th:action="@{/Forecast}" method="post"> <!-- Sends post request with locationField data -->
+            <div>
+
+                <select  class="locationField" type="text" id="locationTextField" placeholder="Location"  name="locationTextField" >
+                    <option value="37.287167,-121.949959,Campbell">Campbell, CA</option>
+                   <option value="341.2565,95.9345,Omaha">Omaha, NE</option>
+                    <option value="30.2672,30.2672,Austin">Austin, TX</option>
+                    <option value="42.8048,140.6874,Niseko">Niseko, Japan</option>
+                    <option value="34.6851,135.8048,Nara">Nara, Japan </option>>
+                    <option value="6.2088,106.8456,Jakarta">Jakarta, Indonesia</option>
+                </select>
+
+
+            </div>
+            <div> <button class="locationSubmit" type="submit" >Search</button></div>
+       </form>
+    </div>
+
+
+</body>
+</html>

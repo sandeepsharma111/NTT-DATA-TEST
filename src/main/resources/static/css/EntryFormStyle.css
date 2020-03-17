@@ -1,0 +1,83 @@
+h2 {
+   color: #ffffff;
+   font-size:70px;
+   height: 40px;
+}
+
+.pageTitle{
+    padding-top: 250px;
+    text-align: center;
+}
+
+.inline-block {
+  text-align: center;
+}
+.inline-block div {
+  display: inline-block;
+  text-align: left;
+}
+
+.error{
+    color: #b33737;
+    font-family: Georgia;
+}
+
+.locationField {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 10px;
+  border: 1px solid #b7b7b7;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font: normal 16px/normal Georgia, serif;
+  color: rgba(0,0,0,1);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgba(252,252,252,1);
+  -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.2) ;
+  box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.2) ;
+  width: 500px;
+}
+
+.locationSubmit {
+  -webkit-box-shadow: 1px 1px 1px #666666;
+  -moz-box-shadow: 1px 1px 1px #666666;
+  box-shadow: 1px 1px 1px #666666;
+  border-radius: 3px;
+  font-family: 'Montserrat';
+  color: #ffffff;
+  font-size: 20px;
+  border-width: 0;
+  background: #b33737;
+  padding: 8px 20px 9px 20px;
+}
+
+.locationSubmit:hover {
+  background: #cf3434;
+  cursor: pointer;
+}
+
+.geolocationButton {
+    padding-top: 5px;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+body {
+    background-image: url("/images/bg.jpg");
+    background-size:cover;
+}
+
+@media screen and (max-width: 600px) {
+.pageTitle{
+    padding-top: 200px;
+}
+  h2{
+    padding-bottom: 60px;
+  }
+}

@@ -1,0 +1,104 @@
+* {
+	box-sizing: border-box;
+	margin: 0px; padding: 0;
+}
+body{
+    background-image: url("/images/bg.jpg");
+    background-size:cover;
+}
+
+.forecastLocation{
+    text-align: center;
+    font-size:35px;
+    color:#ffffff;
+    padding: 20px;
+}
+
+body > div {
+/*
+    FOR TESTING
+    background: deepskyblue;
+*/
+    color:#ffffff;
+
+    display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+	justify-content: center;
+	-webkit-align-items: center;
+    -moz-align-items: center;
+	align-items: flex-start;
+	-webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+div > div {
+    margin: 10px;
+}
+
+/*
+    Current Weather Forecast
+*/
+.divA{
+     background: rgba(0, 0, 0, 0.3); /* Black background with 30% opacity */
+     border-radius: 15px;
+     width: 600px;
+     height: 220px;
+}
+/*
+    Weekly Weather Forecast
+*/
+.divB{
+    background: rgba(0, 0, 0, 0.3); /* Black background with 30% opacity */
+    border-radius: 15px;
+    width: 600px;
+    height: 560px;
+}
+
+.currentWeatherCentering{
+    text-align: center;
+}
+
+.currentForecastTitle{
+    font-size:30px;
+    text-decoration-style:solid ;
+    text-decoration-line:
+    underline;
+}
+
+.weeklyForecastTitle{
+    font-size:30px;
+    text-align: center;
+    text-decoration-line: underline;
+    padding:5px;
+    text-decoration-style: solid ;
+}
+
+/*
+ Aligns icon next to temperature for current weather
+*/
+.img-valign {
+  vertical-align: bottom;
+  margin-bottom: 0em;
+}
+
+canvas{
+    width: 64px;
+    height: 64px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.currentWeatherInfo{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    padding: 5px;
+}

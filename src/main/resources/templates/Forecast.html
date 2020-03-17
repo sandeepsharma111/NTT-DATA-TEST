@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weekly Forecast.</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/HeaderStyle.css}"/> <!-- CSS FOR HEADER FRAGMENT -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/ForecastStyle.css}"/> <!-- CSS FOR FORECAST.HTML -->
+    <script src="https://darkskyapp.github.io/skycons/skycons.js"></script> <!-- ICONS FOR WEATHER -->
+</head>
+<body>
+
+<header th:replace="fragments/HeaderFragment :: fragment"></header> <!-- HEADER FRAGMENT -->
+
+    <h2 th:text="${weatherLocation}" class="forecastLocation"></h2>
+
+<div>
+    <div th:object="${currently}" class="divA">
+        <div class="currentWeatherCentering">
+
+            <h1 class="currentForecastTitle">Currently</h1>
+
+            <canvas class="img-valign" th:classappend="*{getIcon()}" width="64" height="64"></canvas>
+
+            <span th:text="*{#numbers.formatDecimal(getTemperature(),1,0)} + '&deg;F'" style="font-size:40px;"></span>
+
+            <p style="padding: 5px;"><span th:text="*{getSummary()}" style="font-size:19px;"></span></p>
+
+            <section class="currentWeatherInfo">
+                <p  th:text="'Wind ' + *{#numbers.formatDecimal(getWindSpeed(),1,0)} + 'mph'" ></p>
+                <p  th:text="'Visibility ' + *{getVisibility()} + 'mi'"
+                    style="padding-left: 20px;"></p>
+            </section>
+
+            <section class="currentWeatherInfo">
+                <p  th:text="'Barometer ' + *{getPressure()} +'mb'"></p>
+                <p  th:text="'Humidity ' + *{#numbers.formatPercent(getHumidity(), 1, 0)}"
+                    style="padding-left: 25px; padding-right:25px;"></p>
+                <p  th:text="'Dew Point ' + *{#numbers.formatDecimal(getDewPoint(),1,0)} + '&deg;'"></p>
+            </section>
+        </div>
+
+    </div>
+    <div class="divB" th:if="${not #lists.isEmpty(weatherObject)}"> <!-- DIV THAT CONTAINS WEEKLY FORECAST -->
+        <h1 class="weeklyForecastTitle">Forecast</h1>
+        <ul style="list-style: none;" th:each="weather: ${weatherObject}">
+            <li style="padding-left:5px;">
+                <canvas th:attr="class=${weather.getIcon()}"  width="64" height="64"></canvas> <!-- CANVAS FOR DARK SKY ICON -->
+                <div style="display: inline-block;">
+                    <p th:text="${#dates.dayOfWeekName(weather.getTime())} + ' - ' +
+                    ${#dates.format(weather.getTime(), 'dd MMM')}"></p>
+                    <p th:text="${weather.getSummary()}"></p>
+                    <p th:text="${#numbers.formatDecimal(weather.getTemperatureHigh(),1,0)} + '&deg;F' + ' / '
+                    + ${#numbers.formatDecimal(weather.getTemperatureLow(),1,0)} + '&deg;F'"></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- SCRIPT TO FIND AND DISPLAY SKY ICONS -->
+<script>
+    var icons = new Skycons({"color": "#ff8c00"}),
+          list  = [
+            "clear-day", "clear-night", "partly-cloudy-day",
+            "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+            "fog"
+          ],
+          i;
+
+    for (i = list.length; i--;) {
+    var weatherType = list[i],
+        elements = document.getElementsByClassName(weatherType);
+    for (e = elements.length; e--;) {
+        icons.set(elements[e], weatherType);
+    }
+}
+
+    icons.play();
+</script>
+</body>

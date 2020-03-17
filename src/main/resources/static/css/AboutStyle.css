@@ -1,0 +1,26 @@
+article{
+    margin-left: 170px;
+    overflow: hidden;
+    color:#ffffff;
+    font-size:26px;
+    padding: 1em;
+}
+
+.titleHeader{
+    font-size: 48px;
+    text-decoration: underline;
+    text-align: center;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 1025px) {
+	article {
+	    text-align: center;
+	    margin-left: 0px;
+	}
+}
+
+body{
+    background-image: url("/images/bg.jpg");
+    background-size:cover;
+}
